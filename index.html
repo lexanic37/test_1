@@ -1,0 +1,165 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="apple-touch-icon" href="icon.png">
+        <!-- Place favicon.ico in the root directory -->
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/cover.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    </head>
+    <body>
+
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+        <div class="flex_container">
+            <div id="spanimg"></div>
+            <div class="content">
+                <div class="header_container">
+                    <div class="header">
+                        <div class="header__video-wrapp">
+                            <div class="header__video-box">
+                                <video class="header__video"   loop autoplay>
+                                    <source src="img/Hello-World.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="articles">
+                    <div class="article">
+                        <div class="imgcontainer"><a href="#"></a></div>
+                            <div class="text_container">
+                                <h2>News№1 <a class='like'href="#"><img src="https://png.icons8.com/facebook-like/ios7/25"></a><p class="amount">15</p></h2>
+                                <p class="text">loream leasdasdasdasdasdasdsad Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi debitis dolorem dolores est fugit impedit inventore minus nam non rem? Debitis dignissimos ipsam mollitia nisi officia perspiciatis quas recusandae ullam.</p>
+                                <a href="#" class="more">Читать далее...</a>
+                                <p class="date">Дата публикации:10.08.2017</p>
+
+                            </div>
+                    </div>
+                    <div class="article"></div>
+                    <div class="article"></div>
+                </div>
+
+            </div>
+            <div class="nav">
+                <div class="user_info">
+                    <div class="avatar imgcontainer"></div>
+                    <div class="user_text">
+                        <p class="username">
+                            username
+                        </p>
+                        <div></div>
+                        <p class="status">
+                            Today i go home and go out and under
+                        </p>
+                    </div>
+                </div>
+                <div class="navigation">
+                    <ul>
+                        <li><a href="">Пункт</a></li>
+                        <li><a href="">Пункт</a></li>
+                        <li><a href="">Пункт</a></li>
+                        <li><a href="">Пункт</a></li>
+                        <li><a href="">Пункт</a></li>
+                        <li><a href="">Пункт</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <!-- Add your site or application content here -->
+
+        <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script>
+            $( document ).ready(function() {
+
+                scaleVideoContainer();
+
+                initBannerVideoSize('.video-container .poster img');
+                initBannerVideoSize('.video-container .filter');
+                initBannerVideoSize('.video-container video');
+
+                $(window).on('resize', function() {
+                    scaleVideoContainer();
+                    scaleBannerVideoSize('.video-container .poster img');
+                    scaleBannerVideoSize('.video-container .filter');
+                    scaleBannerVideoSize('.video-container video');
+                });
+
+            });
+
+            function scaleVideoContainer() {
+
+                var height = $(window).height() + 5;
+                var unitHeight = parseInt(height) + 'px';
+                $('.homepage-hero-module').css('height',unitHeight);
+
+            }
+
+            function initBannerVideoSize(element){
+
+                $(element).each(function(){
+                    $(this).data('height', $(this).height());
+                    $(this).data('width', $(this).width());
+                });
+
+                scaleBannerVideoSize(element);
+
+            }
+
+            function scaleBannerVideoSize(element){
+
+                var windowWidth = $(window).width(),
+                    windowHeight = $(window).height() + 5,
+                    videoWidth,
+                    videoHeight;
+
+                // console.log(windowHeight);
+
+                $(element).each(function(){
+                    var videoAspectRatio = $(this).data('height')/$(this).data('width');
+
+                    $(this).width(windowWidth);
+
+                    if(windowWidth < 1000){
+                        videoHeight = windowHeight;
+                        videoWidth = videoHeight / videoAspectRatio;
+                        $(this).css({'margin-top' : 0, 'margin-left' : -(videoWidth - windowWidth) / 2 + 'px'});
+
+                        $(this).width(videoWidth).height(videoHeight);
+                    }
+
+                    $('.homepage-hero-module .video-container video').addClass('fadeIn animated');
+
+                });
+            }
+        </script>
+        <script src="js/main.js"></script>
+
+
+        <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+        <script>
+            window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+            ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
+        </script>
+        <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+    </body>
+</html>
